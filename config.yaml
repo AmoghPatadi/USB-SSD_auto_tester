@@ -1,0 +1,94 @@
+# USB/SSD Storage Device Testing Configuration
+
+# Test Parameters
+test_parameters:
+  # File sizes for testing (in MB)
+  file_sizes: [1, 10, 100, 500, 1000]
+  
+  # Number of iterations for each test
+  iterations: 5
+  
+  # Test patterns
+  patterns:
+    - random
+    - sequential
+    - mixed
+  
+  # Block sizes for I/O operations (in KB)
+  block_sizes: [4, 8, 16, 32, 64, 128, 256, 512, 1024]
+
+# Performance Testing
+performance:
+  # Expected minimum speeds (MB/s)
+  min_write_speed: 50
+  min_read_speed: 100
+  
+  # Performance degradation threshold (%)
+  degradation_threshold: 20
+  
+  # Timeout for operations (seconds)
+  operation_timeout: 300
+
+# Data Integrity
+integrity:
+  # Hash algorithms to use
+  hash_algorithms: ['md5', 'sha256']
+  
+  # Verification modes
+  verification_modes:
+    - immediate    # Verify right after write
+    - delayed      # Verify after some operations
+    - power_cycle  # Verify after simulated power cycle
+
+# Endurance Testing
+endurance:
+  # Number of write/delete cycles
+  write_cycles: 1000
+  
+  # Test duration (hours)
+  max_duration: 24
+  
+  # Temperature monitoring (if available)
+  monitor_temperature: true
+  
+  # SMART data monitoring
+  monitor_smart: true
+
+# Fault Simulation
+fault_simulation:
+  # Enable fault injection
+  enabled: true
+  
+  # Types of faults to simulate
+  fault_types:
+    - power_loss
+    - sudden_disconnect
+    - file_system_errors
+  
+  # Fault injection probability (0.0-1.0)
+  fault_probability: 0.1
+
+# Reporting
+reporting:
+  # Output directory for reports
+  output_dir: "reports"
+  
+  # Report formats
+  formats: ['html', 'json', 'csv']
+  
+  # Real-time dashboard
+  dashboard:
+    enabled: true
+    port: 5000
+  
+  # Alert thresholds
+  alerts:
+    error_rate_threshold: 0.05  # 5%
+    performance_drop_threshold: 0.25  # 25%
+
+# Logging
+logging:
+  level: "INFO"
+  file: "storage_tester.log"
+  max_size_mb: 100
+  backup_count: 5
